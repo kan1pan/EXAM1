@@ -1,0 +1,19 @@
+<div class="container">
+    <div class="row">
+        <div class="col-sm-4" id="tweet-frame-side">
+            <h1>つぶやき一覧</h1>
+            <p><%= notice %></p>
+            <p>新規投稿は↓のボタンをクリック！</p>
+            <%= link_to "つぶやく", new_tweet_path, class: 'btn btn-default btn-sm btn-primary ' %>
+        </div>
+        <div class="col-sm-8 tweet-main">
+            <% @tweets.each do |twt| %>
+                <div class="tweet-frame-main">
+                    <p><%= twt.content %></p>
+                    <%= link_to "編集", edit_tweet_path(twt.id), class: 'btn btn-default btn-sm btn-warning' %>
+                    <%= link_to "削除", tweet_path(twt.id), class: 'btn btn-default btn-sm btn-danger', method: :delete, data:{confirm: '本当に削除していいですか？' } %>
+                </div>
+            <% end %>
+        </div>
+    </div>
+</div>
